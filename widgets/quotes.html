@@ -102,6 +102,12 @@
       <button class="save" onclick="save()">Save</button>
     </div>
     <script defer>
+      if (!localStorage.getItem("quotesWidget")) {
+          localStorage.setItem(
+            "quotesWidget",
+            "wisdom|friendship|success|life"
+          );
+        }
       const main = document.getElementById("main");
       const tagSelect = document.getElementById("tag-select");
       const quote = document.getElementById("quote");
@@ -136,6 +142,8 @@
           }
         }
         localStorage.setItem("quotesWidget", options.join("|"));
+        main.style.display = "block";
+          settings.style.display = "none";
       };
 
       const getTags = async () => {
